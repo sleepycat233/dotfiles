@@ -1,28 +1,53 @@
-
-nnoremap <S-h> <Cmd>call VSCodeNotify('workbench.action.previousEditor')<CR>
-nnoremap <S-l> <Cmd>call VSCodeNotify('workbench.action.nextEditor')<CR>
-
-" nmap H ^
-" nmap L $
-
-" vmap H ^
-" vmap L $
-
 set clipboard=unnamed
 
 set incsearch " Incrementally search while typing
 set ignorecase
 set smartcase " Use smart case for searching
 
-xnoremap i$ :<C-u> normal! T$vt$<CR>
-onoremap i$ :normal vi$<CR>
-xnoremap a$ :<C-u> normal!F$vf$<CR>
-onoremap a$ :normal va$<CR>
+let mapleader = ' '
 
-for s:char in [ '_', '.', ':', ',', ';', '<bar>', '/', '<bslash>', '*', '+', '%', '$' ]
+" the enviornment variable $MYVIMRC need to be set to be the path to `init.vim` in the OS
+map <silent> <leader>r :source $MYVIMRC<cr>
+nmap <leader>q :wq<cr>
 
-  execute 'xnoremap i' . s:char . ' :<C-u>normal! T' . s:char . 'vt' . s:char . '<CR>'
-  execute 'onoremap i' . s:char . ' :normal vi' . s:char . '<CR>'
-  execute 'xnoremap a' . s:char . ' :<C-u>normal! F' . s:char . 'vf' . s:char . '<CR>'
-  execute 'onoremap a' . s:char . ' :normal va' . s:char . '<CR>'
-endfor
+map <leader>' ysiw'
+map <leader>" ysiw"
+
+nnoremap <S-h> <Cmd>call VSCodeNotify('workbench.action.previousEditor')<CR>
+nnoremap <S-l> <Cmd>call VSCodeNotify('workbench.action.nextEditor')<CR>
+
+" extensions
+" download plug.vim using powershell if it is not found from the following directory
+if empty(glob('~/AppData/Local/nvim/autoload/plug.vim'))
+  silent !powershell -Command "Invoke-WebRequest -UseBasicParsing -Uri 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' -OutFile '~/AppData/Local/nvim/autoload/plug.vim'"
+  autocmd VimEnter * PlugInstall
+endif
+
+call plug#begin(stdpath('config') . '/plugged')
+  Plug 'unblevable/quick-scope'
+  Plug 'ggandor/lightspeed.nvim'
+  Plug 'machakann/vim-sandwich'
+call plug#end()
+
+" quick-scope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+
+" vim-sandwich
+runtime macros/sandwich/keymap/surround.vim
+
+highlight OperatorSandwichBuns guifg='#aa91a0' gui=underline ctermfg=172 cterm=underline
+highlight OperatorSandwichChange guifg='#edc41f' gui=underline ctermfg='yellow' cterm=underline
+highlight OperatorSandwichAdd guibg='#b1fa87' gui=none ctermbg='green' cterm=none
+highlight OperatorSandwichDelete guibg='#cf5963' gui=none ctermbg='red' cterm=none
+
+" xmap iss <Plug>(textobj-sandwich-auto-i)
+" xmap ass <Plug>(textobj-sandwich-auto-a)
+" omap iss <Plug>(textobj-sandwich-auto-i)
+" omap ass <Plug>(textobj-sandwich-auto-a)
+
+" lightspeed
+" plece this line after runtime macros/sandwich..., it overwrites the `S` for lightspeed over sandwich in viusal mode
+xmap S <Plug>Lightspeed_S
