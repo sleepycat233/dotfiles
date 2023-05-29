@@ -1,8 +1,12 @@
+" todo ctrl-j,k to window movement and intellisense selection movement
+" semicolon insertion at end of line
 set clipboard=unnamed
 
-set incsearch " Incrementally search while typing
+" Incrementally search while typing
+set incsearch
 set ignorecase
-set smartcase " Use smart case for searching
+" Use smart case for searching
+set smartcase
 
 let mapleader = ' '
 
@@ -43,10 +47,10 @@ highlight OperatorSandwichChange guifg='#edc41f' gui=underline ctermfg='yellow' 
 highlight OperatorSandwichAdd guibg='#b1fa87' gui=none ctermbg='green' cterm=none
 highlight OperatorSandwichDelete guibg='#cf5963' gui=none ctermbg='red' cterm=none
 
-" xmap iss <Plug>(textobj-sandwich-auto-i)
-" xmap ass <Plug>(textobj-sandwich-auto-a)
-" omap iss <Plug>(textobj-sandwich-auto-i)
-" omap ass <Plug>(textobj-sandwich-auto-a)
+xmap iss <Plug>(textobj-sandwich-auto-i)
+xmap ass <Plug>(textobj-sandwich-auto-a)
+omap iss <Plug>(textobj-sandwich-auto-i)
+omap ass <Plug>(textobj-sandwich-auto-a)
 
 " lightspeed
 " plece this line after runtime macros/sandwich..., it overwrites the `S` for lightspeed over sandwich in viusal mode
