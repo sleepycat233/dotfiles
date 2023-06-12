@@ -1,5 +1,3 @@
-" todo ctrl-j,k to window movement and intellisense selection movement
-" semicolon insertion at end of line
 set clipboard=unnamed
 
 " Incrementally search while typing
@@ -28,8 +26,9 @@ if empty(glob('~/AppData/Local/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin(stdpath('config') . '/plugged')
-  Plug 'unblevable/quick-scope'
+  " Plug 'unblevable/quick-scope'
   Plug 'ggandor/lightspeed.nvim'
+  Plug 'tpope/vim-repeat'
   Plug 'machakann/vim-sandwich'
 call plug#end()
 
