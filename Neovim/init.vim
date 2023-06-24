@@ -6,7 +6,7 @@ set ignorecase
 " Use smart case for searching
 set smartcase
 
-let mapleader = ' '
+let mapleader = ','
 
 " the enviornment variable $MYVIMRC need to be set to be the path to `init.vim` in the OS
 map <silent> <leader>r :source $MYVIMRC<cr>
@@ -33,10 +33,10 @@ call plug#begin(stdpath('config') . '/plugged')
 call plug#end()
 
 " quick-scope
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
-highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
-highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+" highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+" highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 
 " vim-sandwich
 runtime macros/sandwich/keymap/surround.vim
@@ -54,3 +54,5 @@ omap ass <Plug>(textobj-sandwich-auto-a)
 " lightspeed
 " plece this line after runtime macros/sandwich..., it overwrites the `S` for lightspeed over sandwich in viusal mode
 xmap S <Plug>Lightspeed_S
+
+nnoremap <silent> <Space> <Cmd>call VSCodeNotify('whichkey.show')<CR>
