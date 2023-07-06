@@ -1,0 +1,5 @@
+# commands
+
+mklink C:\ProgramData\sioyek\keys_user.config %USERPROFILE%\dotfiles\sioyek\keys_user.config
+mklink %USERPROFILE%\AppData\Local\nvim\init.vim %USERPROFILE%\dotfiles\Neovim\init.vim
+mklink D:\Projects\10xDev\script\AHK-10xDev\Keyboard-Mapping-Optimized-10x-Developer-Edition.ahk %USERPROFILE%\dotfiles\AHK\Keyboard-Mapping-Optimized-10x-Developer-Edition.ahk

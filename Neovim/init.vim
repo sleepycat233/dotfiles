@@ -1,3 +1,4 @@
+" todo clipboard
 set clipboard=unnamed
 
 " Incrementally search while typing
