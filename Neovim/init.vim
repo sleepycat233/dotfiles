@@ -16,8 +16,8 @@ nmap <leader>q :wq<cr>
 map <leader>' ysiw'
 map <leader>" ysiw"
 
-nnoremap <S-h> <Cmd>call VSCodeNotify('workbench.action.previousEditor')<CR>
-nnoremap <S-l> <Cmd>call VSCodeNotify('workbench.action.nextEditor')<CR>
+" nnoremap <S-h> <Cmd>call VSCodeNotify('workbench.action.previousEditor')<CR>
+" nnoremap <S-l> <Cmd>call VSCodeNotify('workbench.action.nextEditor')<CR>
 
 " extensions
 " download plug.vim using powershell if it is not found from the following directory
