@@ -57,3 +57,6 @@ omap ass <Plug>(textobj-sandwich-auto-a)
 xmap S <Plug>Lightspeed_S
 
 nnoremap <silent> <Space> <Cmd>call VSCodeNotify('whichkey.show')<CR>
+
+" cursor fix in jupyter notebook
+autocmd BufEnter *.ipynb#* if mode() == 'n' | call feedkeys("a\<C-c>")
