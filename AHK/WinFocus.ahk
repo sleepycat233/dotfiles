@@ -1,88 +1,59 @@
+hName := "XYplorer.exe"
+hPath := ""
+jName := "msedge.exe"
+jPath := ""
+kName := "Code.exe"
+kPath := ""
+yName := "GitHubDesktop.exe"
+yPath := ""
+uName := "Obsidian.exe"
+uPath := "C:\Users\nzdlb\AppData\Local\Obsidian\Obsidian.exe"
+iName := "sioyek.exe"
+iPath := ""
+
 #h::
-IfWinExist, ahk_exe XYplorer.exe
+IfWinExist, ahk_exe %hName%
 {
-    IfWinActive, ahk_exe XYplorer.exe
-    {
-        WinMinimize
-    }
-    else
-    {
-        WinActivate
-    }
+    WinActivate
 }
 Return
 
 #j::
-IfWinExist, ahk_exe msedge.exe
+IfWinExist, ahk_exe %jName%
 {
-    IfWinActive, ahk_exe msedge.exe
-    {
-        WinMinimize
-    }
-    else
-    {
-        WinActivate
-    }
+    WinActivate
 }
 Return
 
 #k::
-IfWinExist, ahk_exe Code.exe
+IfWinExist, ahk_exe %kName%
 {
-    IfWinActive, ahk_exe Code.exe
-    {
-        WinMinimize
-    }
-    else
-    {
-        WinActivate
-    }
+    WinActivate
 }
 Return
 
 #y::
-IfWinExist, ahk_exe GitHubDesktop.exe
+IfWinExist, ahk_exe %yName%
 {
-    IfWinActive, ahk_exe GitHubDesktop.exe
-    {
-        WinMinimize
-    }
-    else
-    {
-        WinActivate
-    }
+    WinActivate
 }
 Return
 
 #u::
-; Check if Obsidian window exists
-IfWinExist, ahk_exe Obsidian.exe
+IfWinExist, ahk_exe %uName%
 {
-    ; Check if Obsidian window is the active window
-    IfWinActive, ahk_exe Obsidian.exe
-    {
-        ; If it's active, minimize it
-        WinMinimize
-    }
-    else
-    {
-        ; If it exists but is not active, bring it to the front
-        WinActivate
-    }
+    WinActivate
+}
+else
+{
+    Run, %uPath%
 }
 Return
 
 #i::
-IfWinExist, ahk_exe sioyek.exe
+IfWinExist, ahk_exe %iName%
 {
-    IfWinActive, ahk_exe sioyek.exe
-    {
-        WinMinimize
-    }
-    else
-    {
-        WinActivate
-    }
+    WinActivate
 }
 Return
 
