@@ -44,6 +44,8 @@ return
 ;     CenterCursorInWindow(active_id)
 ; Return
 
+~LWin::Send {Blind}{vkE8}
+
 CenterCursorInWindow(active_id) {
     ; Get the size and position of the active window
     WinGetPos, X, Y, Width, Height, ahk_id %active_id%
