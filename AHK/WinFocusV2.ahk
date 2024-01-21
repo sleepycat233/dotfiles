@@ -3,7 +3,13 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ; Define your key-value pairs with hotkey modifiers
-kv := {"#u":"Obsidian.exe", "#i":"sioyek.exe", "#j":"msedge.exe", "#k":"Code.exe", "#h": "XYplorer.exe", "#y": "GitHubDesktop.exe"}
+kv := {"#u":"Obsidian", "#i":"sioyek", "#j":"msedge", "#k":"Code", "#h": "XYplorer", "#y": "GitHubDesktop"}
+
+; Create a group for each executable
+for key, value in kv {
+    groupName := "Group" . value   ; Create a unique group name for each executable
+    GroupAdd, %groupName%, ahk_exe %value%.exe  ; Add all windows of this executable to the group
+}
 
 ; Loop through each key-value pair and create a hotkey
 for key, value in kv {
@@ -17,11 +23,14 @@ LaunchAndCenter:
 
     ; Get the corresponding value (executable name)
     ExecutableName := kv[TriggeredHotkey]
+    groupName := "Group" . ExecutableName
 
     ; Activate the window
-    IfWinExist, ahk_exe %ExecutableName%
+    IfWinExist, ahk_exe %ExecutableName%.exe
     {
-        WinActivate
+        ; MsgBox, activate %groupName%
+        ; WinActivate
+        GroupActivate, %groupName%, R  ; Activate the next window in the group
         Sleep, 100 ; Give some time for the window to activate
         WinGet, active_id, ID, A
         CenterCursorInWindow(active_id)
@@ -30,18 +39,18 @@ LaunchAndCenter:
         ; MsgBox, % "Window for " . ExecutableName . " not found."
 return
 
-#C::
-    WinGet, active_id, ID, A
-    CenterCursorInWindow(active_id)
-Return
+; #C::
+;     WinGet, active_id, ID, A
+;     CenterCursorInWindow(active_id)
+; Return
 
 CenterCursorInWindow(active_id) {
     ; Get the size and position of the active window
     WinGetPos, X, Y, Width, Height, ahk_id %active_id%
 
     ; Calculate the center position
-    CenterX := (Width / 2)
-    CenterY := (Height / 2)
+    CenterX := Width / 2
+    CenterY := Height / 2
 
     ; Debug
     ; ToolTip, active_id: %active_id%`nX:%X%`nY:%Y%`nWidth: %Width%`nHeight: %Height%`nCenterX: %CenterX%`nCenterY: %CenterY%
