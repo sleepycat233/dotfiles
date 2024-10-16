@@ -16,8 +16,8 @@ nmap <leader>q :wq<cr>
 map <leader>' ysiw'
 map <leader>" ysiw"
 
-nnoremap <S-h> <Cmd>call VSCodeNotify('workbench.action.previousEditor')<CR>
-nnoremap <S-l> <Cmd>call VSCodeNotify('workbench.action.nextEditor')<CR>
+" nnoremap <S-h> <Cmd>call VSCodeNotify('workbench.action.previousEditor')<CR>
+" nnoremap <S-l> <Cmd>call VSCodeNotify('workbench.action.nextEditor')<CR>
 
 nnoremap <silent> <Space> :call VSCodeNotify('whichkey.show')<CR>
 xnoremap <silent> <Space> :call VSCodeNotify('whichkey.show')<CR>
@@ -43,6 +43,7 @@ call plug#end()
 " highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 
 " vim-sandwich
+" https://github.com/machakann/vim-sandwich/wiki/Introduce-vim-surround-keymappings
 runtime macros/sandwich/keymap/surround.vim
 
 highlight OperatorSandwichBuns guifg='#aa91a0' gui=underline ctermfg=172 cterm=underline
@@ -54,6 +55,8 @@ xmap iss <Plug>(textobj-sandwich-auto-i)
 xmap ass <Plug>(textobj-sandwich-auto-a)
 omap iss <Plug>(textobj-sandwich-auto-i)
 omap ass <Plug>(textobj-sandwich-auto-a)
+
+xmap gs <Plug>(sandwich-add)
 
 " lightspeed
 " plece this line after runtime macros/sandwich..., it overwrites the `S` for lightspeed over sandwich in viusal mode
