@@ -14,3 +14,6 @@
 ~LWin::Send "{Blind}{vkE8}"
 
 #p::Reload
+
+; whispering
+#+f23::!+r
