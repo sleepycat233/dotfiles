@@ -15,5 +15,12 @@
 
 #p::Reload
 
-; whispering
-#+f23::!+r
+; copilot key remap
+; #+f23::!+r
+
+<+<#f23:: Send "{Blind}{LShift Up}{RControl Down}"
+<+<#f23 Up:: Send "{RControl Up}{LWin Up}"
+; copilot sends rcontrol + win
+
+; #^c:: MsgBox "trigger"
+#^.::!+r ; whispering
