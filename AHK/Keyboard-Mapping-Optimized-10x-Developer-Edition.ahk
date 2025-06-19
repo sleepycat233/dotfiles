@@ -23,7 +23,7 @@ SetWorkingDir, %A_ScriptDir%
 timeout := 0.3
 
 ;Should tapping shift twice turn on Capslock? this value is either 'true' or 'false' with no quotes default is 'false', which means a double tap of Shift will cancel the shift
-double_shift_for_caps := true
+double_shift_for_caps := false
 
 ;Allow the sequence "Shift,Space,Key" to still shift the Key this value is either 'true' or 'false' with no quotes this means that the Spacebar will not cancel the shift a user wanted to press Shift+Space to be able to shift the next char after Space
 skip_spacebar := true
@@ -49,32 +49,32 @@ Hotkey, *j, Off
 Hotkey, *k, Off
 Hotkey, *l, Off
 Hotkey, *o, Off
+Hotkey, *y, Off
 Hotkey, *u, Off
-Hotkey, *e, Off
+Hotkey, *i, Off
+; Hotkey, *e, Off
 ; Hotkey, *h, Off
 ; Hotkey, *[, Off
-Hotkey, *s, Off
-Hotkey, *f, Off
-Hotkey, *., Off
-Hotkey, *`,, Off
-Hotkey, *m, Off
-Hotkey, *w, Off
-Hotkey, *q, Off
-Hotkey, *c, Off
-Hotkey, *x, Off
-Hotkey, *v, Off
-Hotkey, *r, Off
-Hotkey, *z, Off
-Hotkey, *y, Off
-Hotkey, *t, Off
-Hotkey, *a, Off
-Hotkey, *d, Off
-Hotkey, *`;, Off
+; Hotkey, *s, Off
+; Hotkey, *f, Off
+; Hotkey, *., Off
+; Hotkey, *`,, Off
+; Hotkey, *m, Off
+; Hotkey, *w, Off
+; Hotkey, *q, Off
+; Hotkey, *c, Off
+; Hotkey, *x, Off
+; Hotkey, *v, Off
+; Hotkey, *r, Off
+; Hotkey, *z, Off
+; Hotkey, *t, Off
+; Hotkey, *a, Off
+; Hotkey, *d, Off
+; Hotkey, *`;, Off
 ; Hotkey, *g, Off
-Hotkey, *t, Off
-Hotkey, *b, Off
+; Hotkey, *t, Off
+; Hotkey, *b, Off
 ; Hotkey, *p, Off
-Hotkey, *i, Off
 ; Hotkey, *!, Off
 ; Hotkey, *@, Off
 ; Hotkey, *#, Off
@@ -88,7 +88,7 @@ Hotkey, *i, Off
 ; Hotkey, 5, Off
 ; Hotkey, 6, Off
 ; Hotkey, *9, Off
-Hotkey, *n, Off
+; Hotkey, *n, Off
 ; Hotkey, 0, Off
 
 *AppsKey::
@@ -97,99 +97,22 @@ Hotkey, *n, Off
     Hotkey, *k, on
     Hotkey, *l, on
     Hotkey, *o, on
-    Hotkey, *u, on
-    Hotkey, *e, on
-    ; Hotkey, *h, on
-    ; Hotkey, *[, on
-    Hotkey, *s, on
-    Hotkey, *f, on
-    Hotkey, *., on
-    Hotkey, *`,, on
-    Hotkey, *m, on
-    Hotkey, *w, on
-    Hotkey, *q, on
-    Hotkey, *c, on
-    Hotkey, *x, on
-    Hotkey, *v, on
-    Hotkey, *r, on
-    Hotkey, *z, on
     Hotkey, *y, on
-    Hotkey, *t, on
-    Hotkey, *a, on
-    Hotkey, *d, on
-    Hotkey, *`;, on
-    ; Hotkey, *g, on
-    Hotkey, *t, on
-    Hotkey, *b, on
-    ; Hotkey, *p, on
+    Hotkey, *u, on
     Hotkey, *i, on
-    ; Hotkey, *!, on
-    ; Hotkey, *@, on
-    ; Hotkey, *#, on
-    ; Hotkey, *$, on
-    ; Hotkey, *`%, on
-    ; Hotkey, *^, on
-; Hotkey, 1, On
-; Hotkey, 2, On
-; Hotkey, 3, On
-; Hotkey, 4, On
-; Hotkey, 5, On
-; Hotkey, 6, On
-    ; Hotkey, *9, on
-    Hotkey, *n, on
-    ; Hotkey, 0, on
 return
 
 *AppsKey up::
-    Hotkey, *h, off
-    Hotkey, *j, off
-    Hotkey, *k, off
-    Hotkey, *l, off
+    Hotkey, *h, Off
+    Hotkey, *j, Off
+    Hotkey, *k, Off
+    Hotkey, *l, Off
     Hotkey, *o, Off
-    Hotkey, *u, Off
-    Hotkey, *e, Off
-    ; Hotkey, *h, Off
-    ; Hotkey, *[, Off
-    Hotkey, *s, Off
-    Hotkey, *f, Off
-    Hotkey, *., Off
-    Hotkey, *`,, Off
-    Hotkey, *m, Off
-    Hotkey, *w, Off
-    Hotkey, *q, Off
-    Hotkey, *c, Off
-    Hotkey, *x, Off
-    Hotkey, *v, Off
-    Hotkey, *r, Off
-    Hotkey, *z, Off
     Hotkey, *y, Off
-    Hotkey, *t, Off
-    Hotkey, *a, Off
-    Hotkey, *d, Off
-    Hotkey, *`;, Off
-    ; Hotkey, *g, Off
-    Hotkey, *t, Off
-    Hotkey, *b, Off
-    ; Hotkey, *p, Off
+    Hotkey, *u, Off
     Hotkey, *i, Off
-    ; Hotkey, *!, Off
-    ; Hotkey, *@, Off
-    ; Hotkey, *#, Off
-    ; Hotkey, *$, Off
-    ; Hotkey, *`%, Off
-    ; Hotkey, *^, Off
-    ; Hotkey, 1, Off
-    ; Hotkey, 2, Off
-    ; Hotkey, 3, Off
-    ; Hotkey, 4, Off
-    ; Hotkey, 5, Off
-    ; Hotkey, 6, Off
-    ; Hotkey, *9, Off
-    ; Hotkey, 0, Off
-    Hotkey, *n, Off
 return
 
-;RALT combos:
 *k::send {blind}{up}
 *j::send {blind}{down}
 *h::send {blind}{left}
@@ -213,33 +136,32 @@ return
 ;"Metago"
 ;
 
-*w::send {blind}{LCtrl Down}{d}{LCtrl Up} ;(Word) select word, press again to select next occurrence
-*c::send {LCtrl Down}{c}{LCtrl Up} ;(Copy) copy word ! "copy word in cursor"
-*x::send {LCtrl Down}{x}{LCtrl Up} ;(X) cut word/selection !need above extension
-*v::send {LCtrl Down}{v}{LCtrl Up} ;(V) Paste
+; *w::send {blind}{LCtrl Down}{d}{LCtrl Up} ;(Word) select word, press again to select next occurrence
+; *c::send {LCtrl Down}{c}{LCtrl Up} ;(Copy) copy word ! "copy word in cursor"
+; *x::send {LCtrl Down}{x}{LCtrl Up} ;(X) cut word/selection !need above extension
+; *v::send {LCtrl Down}{v}{LCtrl Up} ;(V) Paste
 ;*r::send {LCtrl Down}{d}{v}{LCtrl Up}    ;(Replace) replace Word with the clipboard
-*z::send {Blind}{LCtrl Down}{z}{LCtrl Up} ;(Z) undo
+; *z::send {Blind}{LCtrl Down}{z}{LCtrl Up} ;(Z) undo
 ; *y::send {LCtrl Down}{y}{LCtrl Up} ;(Y) redo
-*t::send {home}{LShift Down}{end}{LShift Up} ;(Text) select all Text in line (excluding the indent)
-*a::send {Blind}{LCtrl Down}{g}{LCtrl Up} ;(All) select all things in a line including the indent
-*r::send {LCtrl Down}{LShift Down}{r}{LShift Up}{LCtrl Up}
+; *t::send {home}{LShift Down}{end}{LShift Up} ;(Text) select all Text in line (excluding the indent)
+; *a::send {Blind}{LCtrl Down}{g}{LCtrl Up} ;(All) select all things in a line including the indent
+; *r::send {LCtrl Down}{LShift Down}{r}{LShift Up}{LCtrl Up}
 
 ; *e::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{,}{LShift Up} ;select inside angled brackets ! "Quick and Simple Text Selection" (extension.selectAngleBrackets)
 ; *h::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{.}{LShift Up} ;select inside HTML tag ! "Quick and Simple Text Selection" (extension.selectInTag)
 ; *[::send {blind}{LCtrl Down}{k}{LCtrl Up}{[}   ;select inside square/curly bracket ! "Quick and Simple Text Selection"
-*b::send {blind}{F13} ;(Flip case) flip to lower/upper/camal/firstUpper case !"change-case" (extension.changeCase.lower, extension.changeCase.upper, extension.changeCase.upperFirst)
-*.::send {blind}{F14} ;swap argument right !"Any Swap" (anySwap.forward)
-*,::send {blind}{F15} ;swap argument left (anySwap.Backward)
-*q::send {blind}{F16} ;(Quote) select inside quote !"Bracket Select" (bracket-select.select)
-*m::send {blind}{F17} ;(Member) jump to next/previous member !"Go to Next/Previous Member" (gotoNextPreviousMember.nextMember, gotoNextPreviousMember.previousMember)
-*e::send {blind}{LCtrl Down}{l}{LCtrl Up}{e} ;Balance (outward)
-
-*;::send {blind}{LCtrl Down}{LShift Down}{;}{LShift Up}{LCtrl Up}    ;add ;: at end of line !Semicolon Insertion Shortcut
+; *b::send {blind}{F13} ;(Flip case) flip to lower/upper/camal/firstUpper case !"change-case" (extension.changeCase.lower, extension.changeCase.upper, extension.changeCase.upperFirst)
+; *.::send {blind}{F14} ;swap argument right !"Any Swap" (anySwap.forward)
+; *,::send {blind}{F15} ;swap argument left (anySwap.Backward)
+; *q::send {blind}{F16} ;(Quote) select inside quote !"Bracket Select" (bracket-select.select)
+; *m::send {blind}{F17} ;(Member) jump to next/previous member !"Go to Next/Previous Member" (gotoNextPreviousMember.nextMember, gotoNextPreviousMember.previousMember)
+; *e::send {blind}{LCtrl Down}{l}{LCtrl Up}{e} ;Balance (outward)
+; *;::send {blind}{LCtrl Down}{LShift Down}{;}{LShift Up}{LCtrl Up}    ;add ;: at end of line !Semicolon Insertion Shortcut
 
 ; *s::send {LCtrl Down}{LShift Down}{LAlt Down}{g}{LAlt Up}{LShift Up}{LCtrl Up} ;(Select to)
-*f::send {Blind}{F18} ; Metago
-*s::send {Blind}{F19}
-*d::send {LAlt Down}{d}{LAlt Up} ;(Delete to)
+; *f::send {Blind}{F18} ; Metago
+; *s::send {Blind}{F19}
+; *d::send {LAlt Down}{d}{LAlt Up} ;(Delete to)
 ; *d::send {Blind}{Delete}
 
 ; 1::send {LCtrl Down}{k}{LCtrl Up}{LCtrl Down}{i}{LCtrl Up}   ;display hover
@@ -250,7 +172,7 @@ return
 ; 6::send {LCtrl Down}{d}{t}{LCtrl Up}   ;transpose
 
 ; *b::send {end}{space}{{}{}}{left}{enter}    ;add bracket{}and start a new line
-*n::send {LCtrl Down}{k}{LCtrl Up}{n}
+; *n::send {LCtrl Down}{k}{LCtrl Up}{n}
 
 ;;;standalone keys: "[" key send DELETE, Use it if the Delete key is distant on your keyboard.
 ; *=::Send {Blind}{BackSpace} ;(Backspace)
@@ -267,7 +189,6 @@ return
 *5::send {Blind}{`%}
 *6::send {Blind}{^}
 
-; *6::Send {Blind}{Delete}
 *7::Send {Blind}{Delete} ;
 *8::Send {Blind}{BackSpace} ;(Backspace)
 ; *8::Sendmode("{Blind}{BackSpace}", "{Delete}")
@@ -415,6 +336,7 @@ CapsLock & v::Send {}}
 
 ; CapsLock & `::SendMode("{``}","{~}")
 CapsLock & `::Send {``}
+CapsLock & Escape::Send {``}
 CapsLock & !::SendMode("{!}", "assignment") ;
 CapsLock & @::SendMode("{@}", "{}") ;
 CapsLock & $::SendMode("{$}", "{$}{{}") ;
