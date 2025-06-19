@@ -8,9 +8,9 @@
 #i::#6
 #c::#7
 #v::#8
-#n::#9
-#m::#0
-#f::Send "#{t}{Home}{Right 10}{Enter}"
+#b::#9
+#n::#0
+#m::Send "#{t}{Home}{Right 10}{Enter}"
 
 ~LWin::Send "{Blind}{vkE8}"
 
