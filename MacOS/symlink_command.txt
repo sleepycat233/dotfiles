@@ -1,0 +1,2 @@
+ln -s /Users/me/Documents/GitHub/dotfiles/Macos/karabiner.json ~/.config/karabiner/karabiner.json
+ln -s /Users/me/Documents/GitHub/dotfiles/Macos/init.lua ~/.hammerspoon/init.lua
