@@ -24,10 +24,10 @@ xnoremap <silent> <Space> :call VSCodeNotify('whichkey.show')<CR>
 
 " extensions
 " download plug.vim using powershell if it is not found from the following directory
-if empty(glob('~/AppData/Local/nvim/autoload/plug.vim'))
-  silent !powershell -Command "Invoke-WebRequest -UseBasicParsing -Uri 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' -OutFile '~/AppData/Local/nvim/autoload/plug.vim'"
-  autocmd VimEnter * PlugInstall
-endif
+" if empty(glob('~/AppData/Local/nvim/autoload/plug.vim'))
+  " silent !powershell -Command "Invoke-WebRequest -UseBasicParsing -Uri 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' -OutFile '~/AppData/Local/nvim/autoload/plug.vim'"
+  " autocmd VimEnter * PlugInstall
+" endif
 
 call plug#begin(stdpath('config') . '/plugged')
   " Plug 'unblevable/quick-scope'
