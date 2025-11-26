@@ -9,6 +9,8 @@
 -- Ctrl+T  → Terminal（终端 Terminal）
 -- Ctrl+Y  → GitHub Desktop
 -- Ctrl+X  → Chrome（Google Chrome）
+-- Ctrl+Q  → ChatGPT Atlas
+-- Ctrl+W  → Preview（预览 Preview）
 ------------------------------------------------------------
 
 local function openApp(target)
@@ -59,6 +61,8 @@ local TARGETS = {
   finder  = { bundleID = "com.apple.finder",        name = "Finder" },
   terminal= { bundleID = "com.apple.Terminal",      name = "Terminal" },
   ghdesk  = { bundleID = "com.github.GitHub",       name = "GitHub Desktop" },
+  preview = { bundleID = "com.apple.Preview",       name = "Preview" },
+  atlas   = { bundleID = "com.openai.atlas",        name = "ChatGPT Atlas" },
 }
 
 ------------------------------------------------------------
@@ -120,3 +124,5 @@ bindOpen({ "ctrl" }, "h", TARGETS.finder)    -- Ctrl+H → Finder
 bindOpen({ "ctrl" }, "t", TARGETS.terminal)  -- Ctrl+T → Terminal
 bindOpen({ "ctrl" }, "y", TARGETS.ghdesk)    -- Ctrl+Y → GitHub Desktop
 bindOpen({ "ctrl" }, "x", TARGETS.chrome)    -- Ctrl+X → Chrome
+bindOpen({ "ctrl" }, "q", TARGETS.atlas)     -- Ctrl+Q → ChatGPT Atlas
+bindOpen({ "ctrl" }, "w", TARGETS.preview)   -- Ctrl+W → Preview
