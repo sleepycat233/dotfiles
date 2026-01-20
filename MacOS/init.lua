@@ -63,6 +63,8 @@ local TARGETS = {
   ghdesk  = { bundleID = "com.github.GitHub",       name = "GitHub Desktop" },
   preview = { bundleID = "com.apple.Preview",       name = "Preview" },
   atlas   = { bundleID = "com.openai.atlas",        name = "ChatGPT Atlas" },
+  obsidian= { bundleID = "md.obsidian",             name = "Obsidian" },
+  antigravity={ bundleID = "com.google.antigravity",      name = "Antigravity" },
 }
 
 ------------------------------------------------------------
@@ -125,4 +127,5 @@ bindOpen({ "ctrl" }, "t", TARGETS.terminal)  -- Ctrl+T → Terminal
 bindOpen({ "ctrl" }, "y", TARGETS.ghdesk)    -- Ctrl+Y → GitHub Desktop
 bindOpen({ "ctrl" }, "x", TARGETS.chrome)    -- Ctrl+X → Chrome
 bindOpen({ "ctrl" }, "q", TARGETS.atlas)     -- Ctrl+Q → ChatGPT Atlas
-bindOpen({ "ctrl" }, "w", TARGETS.preview)   -- Ctrl+W → Preview
+bindOpen({ "ctrl" }, "w", TARGETS.antigravity) -- Ctrl+W → Antigravity
+bindOpen({ "ctrl" }, "u", TARGETS.obsidian)     -- Ctrl+U → Obsidian
