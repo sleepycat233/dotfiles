@@ -135,7 +135,7 @@ local SCREENSHOT_CFG = {
   defaultPrompt = nil,           -- 粘贴后自动输入的默认提示词（nil = 不输入）
                                  -- 示例: "请解释这个 FreeCAD 界面"
   delayAfterScreenshot = 0.3,    -- 截图后等待时间（秒）
-  delayAfterSwitch     = 1.8,    -- 切换应用后等待时间（秒）
+  delayAfterSwitch     = 0.8,    -- 切换应用后等待时间（秒）
   delayBeforePaste     = 0.3,    -- 粘贴前等待时间（秒）
   playSound            = true,   -- 完成后播放提示音（play sound on completion）
 }
