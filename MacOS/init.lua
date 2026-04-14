@@ -14,7 +14,7 @@
 -- Ctrl+Z  → Codex
 -- Ctrl+F  → FreeCAD
 -- Option+F       → FreeCAD 截图 → GPT Atlas 粘贴（Screenshot Workflow）
--- Option+Shift+F → 手动选区截图 → GPT Atlas 粘贴
+-- Option+Shift+Q → 手动选区截图 → GPT Atlas 粘贴
 ------------------------------------------------------------
 
 local function openApp(target)
@@ -125,7 +125,7 @@ refreshManagedHotkeys()
 ------------------------------------------------------------
 -- 截图 → GPT Atlas 工作流（Screenshot Workflow）
 -- Option+F      ：截图当前 FreeCAD 窗口 → 粘贴到 GPT Atlas
--- Option+Shift+F：手动选区截图 → 粘贴到 GPT Atlas
+-- Option+Shift+Q：手动选区截图 → 粘贴到 GPT Atlas
 ------------------------------------------------------------
 
 -- ▸ 配置区（Configuration）
@@ -135,7 +135,7 @@ local SCREENSHOT_CFG = {
   defaultPrompt = nil,           -- 粘贴后自动输入的默认提示词（nil = 不输入）
                                  -- 示例: "请解释这个 FreeCAD 界面"
   delayAfterScreenshot = 0.3,    -- 截图后等待时间（秒）
-  delayAfterSwitch     = 0.8,    -- 切换应用后等待时间（秒）
+  delayAfterSwitch     = 1.8,    -- 切换应用后等待时间（秒）
   delayBeforePaste     = 0.3,    -- 粘贴前等待时间（秒）
   playSound            = true,   -- 完成后播放提示音（play sound on completion）
 }
@@ -175,8 +175,14 @@ local function switchToAtlasAndPaste()
         return
       end
 
+      -- 点击输入框区域确保获得焦点（输入框通常在窗口底部）
       local atlasWin = atlasApp:focusedWindow()
-      if atlasWin then atlasWin:focus() end
+      if atlasWin then
+        local frame = atlasWin:frame()
+        local clickX = frame.x + frame.w * 0.5
+        local clickY = frame.y + frame.h - 80
+        hs.eventtap.leftClick(hs.geometry.point(clickX, clickY))
+      end
 
       hs.timer.doAfter(SCREENSHOT_CFG.delayBeforePaste, function()
         hs.eventtap.keyStroke({ "cmd" }, "v")
@@ -234,8 +240,8 @@ hs.hotkey.bind({ "alt" }, "f", function()
   switchToAtlasAndPaste()
 end)
 
--- ▸ Option+Shift+F：手动选区截图 → 粘贴到 Atlas（不限于 FreeCAD）
-hs.hotkey.bind({ "alt", "shift" }, "f", function()
+-- ▸ Option+Shift+Q：手动选区截图 → 粘贴到 Atlas（任意应用）
+hs.hotkey.bind({ "alt", "shift" }, "q", function()
   -- -c 写入剪贴板，-i 交互模式，-s 仅选区模式，-x 不播放快门声
   local _, status = hs.execute("/usr/sbin/screencapture -c -i -s -x")
   if not status then
