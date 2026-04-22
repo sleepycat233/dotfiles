@@ -14,7 +14,7 @@
 -- Ctrl+Z  → Codex
 -- Ctrl+F  → FreeCAD
 -- Option+F       → FreeCAD 截图 → GPT Atlas 粘贴（Screenshot Workflow）
--- Option+Shift+Q → 手动选区截图 → GPT Atlas 粘贴
+-- Ctrl+Shift+Q  → 手动选区截图 → GPT Atlas 粘贴
 ------------------------------------------------------------
 
 local function openApp(target)
@@ -125,7 +125,7 @@ refreshManagedHotkeys()
 ------------------------------------------------------------
 -- 截图 → GPT Atlas 工作流（Screenshot Workflow）
 -- Option+F      ：截图当前 FreeCAD 窗口 → 粘贴到 GPT Atlas
--- Option+Shift+Q：手动选区截图 → 粘贴到 GPT Atlas
+-- Ctrl+Shift+Q ：手动选区截图 → 粘贴到 GPT Atlas
 ------------------------------------------------------------
 
 -- ▸ 配置区（Configuration）
@@ -240,8 +240,8 @@ hs.hotkey.bind({ "alt" }, "f", function()
   switchToAtlasAndPaste()
 end)
 
--- ▸ Option+Shift+Q：手动选区截图 → 粘贴到 Atlas（任意应用）
-hs.hotkey.bind({ "alt", "shift" }, "q", function()
+-- ▸ Ctrl+Shift+Q：手动选区截图 → 粘贴到 Atlas（任意应用）
+hs.hotkey.bind({ "ctrl", "shift" }, "q", function()
   -- -c 写入剪贴板，-i 交互模式，-s 仅选区模式，-x 不播放快门声
   local _, status = hs.execute("/usr/sbin/screencapture -c -i -s -x")
   if not status then
