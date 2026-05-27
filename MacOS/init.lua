@@ -8,13 +8,14 @@
 -- Ctrl+H  → Finder（访达 Finder）
 -- Ctrl+T  → iTerm2（终端 iTerm2）
 -- Ctrl+G  → GitHub Desktop
--- Ctrl+X  → Chrome（Google Chrome）
+-- Ctrl+X  → Antigravity from Google
 -- Ctrl+Q  → ChatGPT Atlas
--- Ctrl+W  → Preview（预览 Preview）
+-- Ctrl+W  → Zotero（文献管理 Zotero）
 -- Ctrl+Z  → Codex
 -- Ctrl+F  → FreeCAD
 -- Option+F       → FreeCAD 截图 → GPT Atlas 粘贴（Screenshot Workflow）
 -- Ctrl+Shift+Q  → 手动选区截图 → GPT Atlas 粘贴
+-- Ctrl+Shift+S  → 手动选区截图 → 仅复制到剪贴板（不打开任何 App）
 ------------------------------------------------------------
 
 local function openApp(target)
@@ -66,6 +67,7 @@ local TARGETS = {
   terminal= { bundleID = "com.googlecode.iterm2",   name = "iTerm2" },
   ghdesk  = { bundleID = "com.github.GitHub",       name = "GitHub Desktop" },
   preview = { bundleID = "com.apple.Preview",       name = "Preview" },
+  zotero  = { bundleID = "org.zotero.zotero",        name = "Zotero" },
   atlas   = { bundleID = "com.openai.atlas",        name = "ChatGPT Atlas" },
   obsidian= { bundleID = "md.obsidian",             name = "Obsidian" },
   antigravity={ bundleID = "com.google.antigravity",      name = "Antigravity" },
@@ -240,21 +242,31 @@ hs.hotkey.bind({ "alt" }, "f", function()
   switchToAtlasAndPaste()
 end)
 
--- ▸ Ctrl+Shift+Q：手动选区截图 → 粘贴到 Atlas（任意应用）
-hs.hotkey.bind({ "ctrl", "shift" }, "q", function()
-  -- -c 写入剪贴板，-i 交互模式，-s 仅选区模式，-x 不播放快门声
+-- ▸ 共用：手动选区截图，成功后执行 callback（回调函数）
+--   -c 写入剪贴板，-i 交互模式，-s 仅选区模式，-x 不播放快门声
+local function manualScreenshot(callback)
+  hs.pasteboard.clearContents()  -- 先清空剪贴板，确保取消时 readImage 为 nil
   local _, status = hs.execute("/usr/sbin/screencapture -c -i -s -x")
   if not status then
     hs.alert.show("⚠️ 截图失败或已取消")
     return
   end
-
   if not hs.pasteboard.readImage() then
-    -- 用户按了 Esc 取消选区，静默退出
-    return
+    return  -- 用户按了 Esc 取消选区，静默退出
   end
+  callback()
+end
 
-  switchToAtlasAndPaste()
+-- ▸ Ctrl+Shift+Q：手动选区截图 → 粘贴到 Atlas
+hs.hotkey.bind({ "ctrl", "shift" }, "q", function()
+  manualScreenshot(switchToAtlasAndPaste)
+end)
+
+-- ▸ Ctrl+Shift+S：手动选区截图 → 仅复制到剪贴板（不打开任何 App）
+hs.hotkey.bind({ "ctrl", "shift" }, "s", function()
+  manualScreenshot(function()
+    hs.alert.show("✅ 截图已复制到剪贴板", 1.5)
+  end)
 end)
 
 ------------------------------------------------------------
@@ -273,10 +285,10 @@ hs.hotkey.bind({ "ctrl" }, "t", function()   -- Ctrl+T → iTerm2（所有窗口
   end
 end)
 bindOpen({ "ctrl" }, "g", TARGETS.ghdesk)    -- Ctrl+G → GitHub Desktop
-bindOpen({ "ctrl" }, "x", TARGETS.chrome)    -- Ctrl+X → Chrome
+bindOpen({ "ctrl" }, "x", TARGETS.antigravity) -- Ctrl+X → Antigravity
 bindOpen({ "ctrl" }, "q", TARGETS.atlas)     -- Ctrl+Q → ChatGPT Atlas
 -- bindOpen({ "ctrl" }, "w", TARGETS.antigravity) -- Ctrl+W → Antigravity
-bindOpen({ "ctrl" }, "w", TARGETS.preview) -- Ctrl+W → Preview
+bindOpen({ "ctrl" }, "w", TARGETS.zotero) -- Ctrl+W → Zotero
 bindOpen({ "ctrl" }, "u", TARGETS.obsidian)     -- Ctrl+U → Obsidian
 bindOpen({ "ctrl" }, "z", TARGETS.codex)        -- Ctrl+Z → Codex
 bindOpen({ "ctrl" }, "f", TARGETS.freecad)       -- Ctrl+F → FreeCAD
